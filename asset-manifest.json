@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/quick-chat-client/static/css/main.e15996e2.css",
+    "main.js": "/quick-chat-client/static/js/main.9659c2c9.js",
+    "index.html": "/quick-chat-client/index.html",
+    "main.e15996e2.css.map": "/quick-chat-client/static/css/main.e15996e2.css.map",
+    "main.9659c2c9.js.map": "/quick-chat-client/static/js/main.9659c2c9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e15996e2.css",
+    "static/js/main.9659c2c9.js"
+  ]
+}
