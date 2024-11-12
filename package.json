@@ -43,6 +43,6 @@
       "Localhost",
       ".localhost"
     ],
-    "proxy": "http://localhost:3005"
+    "proxy": "https://quick-chat-server-rosy.vercel.app/"
   }
 }
