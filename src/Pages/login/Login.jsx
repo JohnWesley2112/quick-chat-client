@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import '../../styles/style.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { loginUser } from '../../apiCalls/auth';
+import toast from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
+import { hideLoader, showLoader } from '../../redux/loaderSlice';
 
 function Signup() {
+    const dispatch = useDispatch();
     const [isVisible, setIsVisible] = useState(false);
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
-        firstname: '',
-        lastname: '',
         email: '',
         password: '',
     });
@@ -18,9 +21,24 @@ function Signup() {
 
     const handleSubmit = async e => {
         e.preventDefault();
-        const data = await loginUser(formData);
-        if (data.success) {
-            localStorage.setItem('token', data.token)
+        let response = null;
+        try {
+            dispatch(showLoader());
+            response = await loginUser(formData);
+            if (response.success) {
+                dispatch(hideLoader());
+                localStorage.setItem('token', response.token)
+                window.dispatchEvent(new Event('storage'))
+                navigate('/')
+                toast.success(response.message)
+                window.location.reload()
+            } else {
+                dispatch(hideLoader());
+                toast.error(response.message)
+            }
+        } catch (error) {
+            dispatch(hideLoader());
+            toast.error(response.message)
         }
     }
 
@@ -39,6 +57,9 @@ function Signup() {
                     <span>Don't have an account?</span>
                     <Link to='/signup'>Signup</Link>
                 </div>
+                <button onClick={() => navigate('/')} className='go-to-home' type="button">
+                    <img src={require('../../images/home.png')} alt="" />
+                </button>
             </form>
         </div>
     )

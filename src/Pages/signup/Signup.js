@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import '../../styles/style.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { signupUser } from '../../apiCalls/auth';
+import toast from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
+import { hideLoader, showLoader } from '../../redux/loaderSlice';
 
 function Signup() {
+    const dispatch = useDispatch();
     const [isVisible, setIsVisible] = useState(false);
-    const navigate = useNavigate()
     const [formData, setFormData] = useState({
         firstname: '',
         lastname: '',
@@ -14,14 +17,28 @@ function Signup() {
     });
 
     const handleChange = e => {
-        setFormData({ ...formData, [e.target.name]: e.target.value })
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        })
     }
 
     const handleSubmit = async e => {
         e.preventDefault();
-        const data = await signupUser(formData);
-        if (data.success) {
-            navigate('/login')
+        let response = null;
+        try {
+            dispatch(showLoader());
+            response = await signupUser(formData);
+            dispatch(hideLoader());
+            if (response.success) {
+                toast.success(response.message)
+            } else {
+                toast.error(response.message)
+
+            }
+        } catch (error) {
+            dispatch(hideLoader())
+            toast.error(response.message)
         }
     }
 

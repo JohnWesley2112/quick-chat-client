@@ -5,6 +5,7 @@ async function signupUser(user) {
         const response = await axiosInstance.post('/api/auth/signup', user);
         return response.data;
     } catch (error) {
+        console.log(error);
         return error;
     }
 }

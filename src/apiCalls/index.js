@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 
-
+const token = localStorage.getItem('token')
 export const axiosInstance = axios.create({
-    baseURL: "https://quick-chat-server-rosy.vercel.app/",
+    baseURL: "http://localhost:3005",
     headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`
+        authorization: `Bearer ${token}`
     }
 })
