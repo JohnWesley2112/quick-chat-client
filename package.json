@@ -39,12 +39,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "options": {
-    "allowedHosts": [
-      "Localhost",
-      ".localhost"
-    ],
-    "proxy": "https://quick-chat-server-rosy.vercel.app/"
   }
 }
