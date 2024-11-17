@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/quick-chat-client/static/css/main.2ec47b5f.css",
-    "main.js": "/quick-chat-client/static/js/main.9285a1bc.js",
+    "main.js": "/quick-chat-client/static/js/main.3d336fe2.js",
     "index.html": "/quick-chat-client/index.html",
     "main.2ec47b5f.css.map": "/quick-chat-client/static/css/main.2ec47b5f.css.map",
-    "main.9285a1bc.js.map": "/quick-chat-client/static/js/main.9285a1bc.js.map"
+    "main.3d336fe2.js.map": "/quick-chat-client/static/js/main.3d336fe2.js.map"
   },
   "entrypoints": [
     "static/css/main.2ec47b5f.css",
-    "static/js/main.9285a1bc.js"
+    "static/js/main.3d336fe2.js"
   ]
 }
